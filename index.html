@@ -1,0 +1,59 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fafafa">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  </head>
+
+  <body>
+    <div class="carousel-display">
+      {% for image in site.data.images %}
+        <div class="carousel-slide">
+          <img data-lazy="https://images.shirajganguly.com/full/{{image}}">
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="carousel-nav">
+      {% for image in site.data.images %}
+        <div class="carousel-slide">
+          <img data-lazy="https://images.shirajganguly.com/thumb/{{image}}">
+        </div>
+      {% endfor %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+      $(function(){
+        $('.carousel-display').slick({
+          lazyLoad: 'ondemand',
+          fade: true,
+          arrows: false
+        });
+
+        $('.carousel-nav').slick({
+          lazyLoad: 'ondemand',
+          asNavFor: '.carousel-display',
+          slidesToShow: 6,
+          focusOnSelect: true
+        });
+      })
+    </script>
+  </body>
+</html>
+
